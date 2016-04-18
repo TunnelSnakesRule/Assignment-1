@@ -16,5 +16,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 -login
 -portfolio
 -homepage
+-Game Data model
+-Registration function
+-buy function
+-player signup
 
     

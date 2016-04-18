@@ -15,6 +15,7 @@ class Collections extends MY_Model {
                 . 'WHERE Player = "' . $player . '" '
                 . 'AND Piece LIKE "' . $series . '__' . $part . '"');
 
+    
         return $query->row()->Count;
     }
 

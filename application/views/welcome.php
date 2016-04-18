@@ -9,5 +9,7 @@
 {game_players}
 <br/>
 {game_summary}
-
-
+<br/>
+{create_player}
+<br/>
+{delete_player}
