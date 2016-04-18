@@ -24,7 +24,11 @@ class Registration extends MY_Model {
     protected $sell_receipt;
     protected $sell;
     
-    // Constructor
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //       COnstructors 
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    
     function __construct() {
         parent::__construct('agent', 'name');
         $this->buy='http://botcards.jlparry.com/buy';
@@ -35,6 +39,11 @@ class Registration extends MY_Model {
         $this->password = 'Alexander';
         $this->player = 'Joe';
     }
+    
+     //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //       Registering agent method 
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
      function _register() {
         
         $fields = array(
@@ -45,8 +54,6 @@ class Registration extends MY_Model {
         $result = $this->curl->simple_post($this->register, $fields);
         $xml = simplexml_load_string($result);
         $this->token = (string) $xml->token;
-        //print_r($xml);
-        //echo (string) $xml->token;
         if($this->get($this->name)){
         $this->delete($this->name);
         $obj = $this->create();
@@ -61,14 +68,19 @@ class Registration extends MY_Model {
          
     }
 
-    // get token function 
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //       grabs the token for purchasing packs
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     function get_token() {
         return $this->token;
     }
-
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //      purchases a pack in player name 
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     function buy() {
-        //echo $this->name;
-        //$this->get($this->name)->token;
+        
         $fields = array(
             'team' => $this->team,
             'token' => $this->get($this->name)->token,
@@ -89,10 +101,11 @@ class Registration extends MY_Model {
         
 
     }
-
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //       Sell method to sell packs
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     function sell($top='', $mid='', $bot='') {
-        //echo $this->name;
-        //$this->get($this->name)->token;
         $fields = array(
             'team' => $this->team,
             'token' => $this->get($this->name)->token,

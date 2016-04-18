@@ -8,7 +8,10 @@
 
 Class State extends CI_Model{
     
-    //Initializing
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //       Initalizing
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     protected $status;
     protected $round;
     protected $state;
@@ -19,7 +22,10 @@ Class State extends CI_Model{
     protected $alarm;
     protected $now;
     
-    // Constructor
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //       COnstructors 
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     function __construct() {
         parent::__construct();
         $this->status = 'http://botcards.jlparry.com/status';
@@ -33,8 +39,10 @@ Class State extends CI_Model{
         $this->alarm = (string) $this->stateData->alarm;
         $this->now = (string) $this->stateData->now;
     }
-    
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     //Grab the file from the url and return it as xml file
+    //
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     function get_data($url) {
         $file = file_get_contents($url);
         $xml = simplexml_load_string($file);
